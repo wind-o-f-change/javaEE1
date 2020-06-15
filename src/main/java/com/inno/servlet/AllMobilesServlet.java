@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/allmobiles", name = "Mobiles")
 public class AllMobilesServlet extends HttpServlet {
@@ -19,9 +20,9 @@ public class AllMobilesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Collection<Mobile> mobiles = mobileDao.getAllMobile();
+        List<Mobile> mobiles = mobileDao.getAllMobile();
 
-        req.setAttribute("model", mobiles);
+        req.setAttribute("mobiles", mobiles);
         req.getRequestDispatcher("WEB-INF/jsp/allmobiles.jsp").forward(req, resp);
     }
 }
